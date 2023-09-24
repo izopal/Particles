@@ -1,0 +1,18 @@
+:root{
+    --backgroundColor: #221f2f; 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+canvas{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+#canvasMS{
+    background: var(--backgroundColor);
+     /* filter: blur(7px) contrast(20); */
+}
