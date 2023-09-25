@@ -1,5 +1,14 @@
+@font-face {
+    font-family: sakal;
+    src: url(./fonts/fdN-9sqWtWZZlHRpygd7kQ.woff2);
+    font-weight: 900;
+}
+
+
 :root{
     --backgroundColor: #221f2f; 
+    --textColor:       #fff;
+    --index:           calc(1vw + 1vh);
 }
 
 *{
@@ -15,4 +24,23 @@ canvas{
 #canvasMS{
     background: var(--backgroundColor);
      /* filter: blur(7px) contrast(20); */
+}
+h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: sakal;
+    color: var(--textColor);
+    font-size: calc(var(--index)*3);
+    
+}
+h1 span{
+    /* font-family: sakal; */
+    /* font-size: calc(var(--index)*4); */
+    /* color: black; */
+    transition: all 1s ease;
+}
+h1 span:hover{
+    color: blue;
 }
