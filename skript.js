@@ -9,7 +9,7 @@ window.addEventListener('load', function(){
     const innerWidth   = window.innerWidth,
           innerHeight  = window.innerHeight;
 
-    const canvasWidth             = 800,
+    const canvasWidth             = 500,
           canvasHeight            = 500,
           numberOfParticles       = 150,
           maxDistanceOfParticles  = 100,
@@ -199,8 +199,8 @@ window.addEventListener('load', function(){
             this.canvasSize        = this.canvas.getBoundingClientRect();
             this.element           = document.getElementById('developer').getBoundingClientRect();
             this.heading           = {
-                                        x:      this.element.x -  this.canvasSize.x,
-                                        y:      this.element.y -  this.canvasSize.y,
+                                        x:      this.element.x - this.canvasSize.x,
+                                        y:      this.element.y - this.canvasSize.y,
                                         width:  this.element.width,
                                         height: this.element.height,
                                     }
@@ -241,7 +241,7 @@ window.addEventListener('load', function(){
             // рух з натиснутою лівою кнопкою миші
             canvasMS.addEventListener('mousemove', e =>{
                 if(this.mouse.pressed){
-                    this.mouse.x = e.offsetX ;
+                    this.mouse.x = e.offsetX;
                     this.mouse.y = e.offsetY;
                 }
             });
@@ -252,17 +252,23 @@ window.addEventListener('load', function(){
     
             // ==================== Блок керування  touchPad=======================>
             // натиснули ліву кнопку миші
-            canvasMS.addEventListener('touchstart', e =>{
+            const rect = canvasMS.getBoundingClientRect(); // Отримуємо координати канвасу відносно вікна перегляду
+
+            canvasMS.addEventListener('touchstart', e => {
                 this.mouse.pressed = true;
-                this.mouse.x = e.changedTouches[0].pageX;
-                this.mouse.y = e.changedTouches[0].pageY;
+                this.mouse.x = e.changedTouches[0].pageX - this.canvasSize.x;
+                this.mouse.y = e.changedTouches[0].pageY - this.canvasSize.y;
+                console.log(e);
+                console.log(this.mouse.x);
+                console.log(this.mouse.y);
             });
+            
             // рух з натиснутою лівою кнопкою миші
             canvasMS.addEventListener('touchmove', e =>{
                 if(this.mouse.pressed){
-                    this.mouse.x = e.changedTouches[0].pageX;
-                    this.mouse.y = e.changedTouches[0].pageY;
-                }
+                    this.mouse.x = e.changedTouches[0].pageX - this.canvasSize.x;
+                    this.mouse.y = e.changedTouches[0].pageY  - this.canvasSize.y;
+                    }
             });
             // відпустили ліву кнопку миші
             canvasMS.addEventListener('touchend', () =>{
